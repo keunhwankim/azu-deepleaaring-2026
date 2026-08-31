@@ -28,8 +28,15 @@ from transformers import AutoTokenizer
 sys.path.insert(0, "/workspace")
 from infer_mv_final import parse_answer, MODEL_NAME
 
-D          = "/workspace/outputs"
-VER_PATH   = "/workspace/checkpoints/verifier_r16/final"
+D          = os.environ.get("OUT_DIR", "/workspace/outputs")
+os.makedirs(D, exist_ok=True)
+# 어댑터. 로컬에 없으면 Hugging Face에서 자동으로 받습니다.
+VER_PATH   = os.environ.get("VER_PATH", "/workspace/checkpoints/verifier_r16/final")
+if not os.path.isdir(VER_PATH):
+    from huggingface_hub import snapshot_download
+    print("[어댑터] 로컬에 없음 -> HF 다운로드: kuenhwan/azu-verifier-r16")
+    VER_PATH = snapshot_download("kuenhwan/azu-verifier-r16")
+print(f"[어댑터] {VER_PATH}")
 TARGET     = os.environ.get("VER_TARGET", "holdout")
 TAG        = os.environ.get("VER_TAG", "v1")
 N          = int(os.environ.get("VER_N", 8))

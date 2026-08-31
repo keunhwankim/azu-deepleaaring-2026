@@ -189,7 +189,7 @@ def main():
     DATE     = os.environ.get("MV_DATE", "0831")
     TAG      = "BASE" if LORA_PATH is None else os.environ.get("MV_TAG", "LORA")
     RUN_NAME = f"{TAG}_{PROMPT_ID}_mv{N_SAMPLES}_t{TEMPERATURE}_{TARGET}_{DATE}"
-    OUT_DIR  = "/workspace/outputs"
+    OUT_DIR  = os.environ.get("OUT_DIR", "/workspace/outputs")
 
     RAW_CSV = f"{OUT_DIR}/_raw_only_{RUN_NAME}.csv"
     MV_CSV  = f"{OUT_DIR}/mvresult_{RUN_NAME}.csv"
