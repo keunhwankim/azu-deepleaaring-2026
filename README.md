@@ -43,7 +43,7 @@ max_model_len=3072 / seed=42 / gpu_memory_utilization=0.85
   - 대회 train 데이터 3,000문제 표본의 MV8 결과를 gold와 대조해 자동 라벨링
   - **오답 샘플도 학습에 포함** (판별 경계는 오답이 있어야 학습됨)
   - 평가용 홀드아웃 600문제(`data/holdout_ids.json`)는 학습에서 제외
-- 가중치: https://huggingface.co/datasets/kuenhwan/azu-deeplearning-cot (checkpoints/verifier_r16)
+- 가중치: https://huggingface.co/kuenhwan/azu-verifier-r16 (public)
 
 ## 사용 데이터
 
