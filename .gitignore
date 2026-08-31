@@ -1,0 +1,4 @@
+*.safetensors
+*.bin
+*.csv
+outputs/
