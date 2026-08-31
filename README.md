@@ -75,3 +75,10 @@ python code/make_verifier_data.py
 TRAIN_JSONL=outputs/verifier_train.jsonl RUN=verifier_r16 \
   MAXLEN=1536 python code/train_lora.py
 ```
+
+## 어댑터 배치
+
+`https://huggingface.co/kuenhwan/azu-verifier-r16`에서 받아 임의 경로에 두고,
+2단계 실행 시 `VER_PATH=<경로>`로 지정하십시오. 미지정 시 기본값은
+`/workspace/checkpoints/verifier_r16/final`입니다.
+추론은 로컬 파일만 사용하며 외부 API 호출이 없습니다 (규칙 4).
